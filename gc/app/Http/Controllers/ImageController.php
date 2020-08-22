@@ -29,6 +29,7 @@ class ImageController extends Controller
     $url = Storage::url($image_data);
     //return redirect('/image/judgment')->with('success', asset($url)); //asset($url)で画像にアクセスできる
     $request = new \Http_Request2('https://gateau-chocolat.cognitiveservices.azure.com/customvision/v3.0/Prediction/c4e4cb71-6972-4fb5-9461-d2ae7949a486/detect/iterations/gc/image');
+    $request->setAdapter('curl');
     $url = $request->getUrl();
     $headers = array(
       // Request headers
