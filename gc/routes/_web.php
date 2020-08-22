@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Route;
 //ホーム画面
 Route::get ('/', 'HomeController@index')->name('home');
 
+/* -------------------------------------------------------------------------- */
+
 //商品一覧
 Route::get ('/product/index', 'ProductController@index')->name('product_index');
 
@@ -38,17 +40,17 @@ Route::post ('/product/delete', 'ProductController@delete')->name('product_delet
 
 /* -------------------------------------------------------------------------- */
 
-//画像識別
+//商品画像撮影
 Route::get ('/image', 'ImageController@reading')->name('image_reading');
 
+//画像選択
 Route::get ('/image/judgment', 'ImageController@judgment')->name('image_judgment');
+
+//画像にURL付与
 Route::post ('/image/judgment', 'ImageController@send_judgment')->name('send_image_judgment');
 
-Route::post ('/image/api', 'ApiController@sendapi');
-
 //販売価格表示
-
-//Route::get ('/image/price', 'ImageController@price')->name('image_price');
+Route::get ('/image/price', 'ImageController@price')->name('image_price');
 
 /* -------------------------------------------------------------------------- */
 

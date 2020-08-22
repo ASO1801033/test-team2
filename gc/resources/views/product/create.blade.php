@@ -49,6 +49,17 @@
                 @endif
               </td>
             </tr>
+            <tr>
+              <th scope="row" class="text-center align-middle"><big>商品認識タグ</big></th>
+              <td class="text-left">
+                <input class="form-control" type="text" name="tag" value="{{ old('tag') }}">
+                @if ($errors->has('tag'))
+                  <div class="text-danger">
+                    {{ $errors->first('tag') }}
+                  </div>
+                @endif
+              </td>
+            </tr>
           </tbody>
         </table>
         <button class="btn btn-primary text-dark" type="submit">登録</button>

@@ -1,5 +1,5 @@
 @extends('layouts.app')<!-- layouts/app.blade.phpを継承 -->
-@section('title', '表示')<!-- 画面名の表示 -->
+@section('title', '売上表示')<!-- 画面名の表示 -->
 
 <!-- ↓中身のコンテンツ開始↓ -->
 @section('content')
@@ -43,9 +43,9 @@
           <table class="table table-bordered mt-3">
             <thead>
               <tr>
-                <th scope="col" style="width:20%;" class="text-center"><big>日付</big></th>
+                <th scope="col" style="width:25%;" class="text-center"><big>日付</big></th>
                 <th scope="col" style="width:30%;" class="text-center"><big>商品名</big></th>
-                <th scope="col" style="width:25%;" class="text-center"><big>個数</big></th>
+                <th scope="col" style="width:20%;" class="text-center"><big>個数</big></th>
                 <th scope="col" style="width:25%;" class="text-center"><big>金額</big></th>
               </tr>
             </thead>

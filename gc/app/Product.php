@@ -10,7 +10,7 @@ class Product extends Model
   protected $guarded = ['id'];
 
   // 変更するかもしれないカラム
-  protected $fillable = ['name', 'cost', 'rec_food', 'flg'];
+  protected $fillable = ['name', 'cost', 'rec_food', 'flg', 'tag']; //tagを追加
 
   // Sale_Detailモデルを子に持つことを記述する
   public function sale_details() {

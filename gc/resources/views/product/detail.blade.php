@@ -55,7 +55,7 @@
           <h4>商品削除確認</h4>
         </div>
         <div class="modal-body">
-          <label>本当に削除しますか？</label>
+          <label>本当に削除しますか？<br>関連する売上明細情報も削除されます！</label>
         </div>
         <div class="modal-footer">
           <form action="{{ route('product_delete') }}" method="post">

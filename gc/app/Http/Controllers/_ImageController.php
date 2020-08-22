@@ -4,17 +4,15 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use App\Http\Requests\ImageRequest; //New
+use App\Http\Requests\ImageRequest;
 use Validator;
 use App\Product;
 use Illuminate\Support\Facades\Storage; //追加
 //ターミナル(コマンドプロンプト)上で php artisan storage:link を実行
 
-use \usr\local\pear\share\pear\HTTP;
-require_once '/usr/local/pear/share/pear/HTTP/Request2.php';
-
-class ImageController extends Controller
+class _ImageController extends Controller
 {
+  //ProfileController@indexにあたる
   public function reading() {
     return view('image.reading');
   }
@@ -27,45 +25,8 @@ class ImageController extends Controller
     date_default_timezone_set('Asia/Tokyo'); //タイムゾーンを東京に設定
     $image_data = $req->photo->storeAs('public/file_images', date('Y-m-d_H-i-s').'.jpg');
     $url = Storage::url($image_data);
-    //return redirect('/image/judgment')->with('success', asset($url)); //asset($url)で画像にアクセスできる
-    $request = new \Http_Request2('https://gateau-chocolat.cognitiveservices.azure.com/customvision/v3.0/Prediction/c4e4cb71-6972-4fb5-9461-d2ae7949a486/detect/iterations/gc/image');
-    $url = $request->getUrl();
-    $headers = array(
-      // Request headers
-      'Content-Type' => 'multipart/form-data',
-      'Prediction-key' => 'ace8ebd14cb7406cbb3bffbaf3729076',
-    );
-    $request->setHeader($headers);
-    /*
-    $parameters = array(
-    // Request parameters
-      'numTagsPerBoundingBox' => '{integer}',
-      'application' => '{string}',
-    );
-    */
-    $request->setMethod(\HTTP_Request2::METHOD_POST);
-    // Request body
-    $request->setBody($req->photo);
-
-    try
-    {
-        $response = $request->send();
-        echo $response->getBody();
-    }
-    catch (HttpException $ex)
-    {
-        echo $ex;
-    }
-  }
-
-  /*
-  public function send_judgment(Request $req) {
-    date_default_timezone_set('Asia/Tokyo'); //タイムゾーンを東京に設定
-    $image_data = $req->photo->storeAs('public/file_images', date('Y-m-d_H-i-s').'.jpg');
-    $url = Storage::url($image_data);
     return redirect('/image/judgment')->with('success', asset($url)); //asset($url)で画像にアクセスできる
   }
-  */
 
   public function price(Request $req) {
     dd($req);
@@ -109,7 +70,5 @@ class ImageController extends Controller
     */
 
     return view('image.price');
-//    return redirect('/');
-    // return view('image.price');
   }
 }

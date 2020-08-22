@@ -26,7 +26,8 @@ class CreateRequest extends FormRequest
        $validate_rule = [
          'name' => 'required | between:1, 50',
          'rec_food' => 'required | between:1, 50',
-         'cost' => 'required | numeric | min:0 | not_in:0 | between:1, 99999999999'
+         'cost' => 'required | numeric | min:0 | not_in:0 | between:1, 99999999999',
+         'tag' => 'required | between:1, 50 | unique:products', //tagの条件を追加
        ];
        return $validate_rule;
      }
@@ -43,6 +44,9 @@ class CreateRequest extends FormRequest
          'cost.not_in' => '価格は1円以上にする必要があります',
          'cost.between' => '1〜11桁以内で入力してください',
          'cost.required' => '必ず入力してください',
+         'tag.required' => '必ず入力してください',
+         'tag.between' => '1～50文字で入力してください',
+         'tag.unique' => 'このタグ名はすでにあります'
        ];
        return $msg;
      }
