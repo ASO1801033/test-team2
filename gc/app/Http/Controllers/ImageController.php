@@ -46,7 +46,14 @@ class ImageController extends Controller
     */
     $request->setMethod(\HTTP_Request2::METHOD_POST);
     // Request body
-    $request->setBody($req->photo);
+    /** masatokg 20200824 start */
+    // 届いたファイルをセット
+    // $request->setBody($req->photo);
+    // １．届いたリクエストのボディ部をセット
+    $request->setBody($req->request->all());
+    // ２．届いたリクエストのファイルの中身をバイナリにしてセット
+    // $request->setBody(file_get_contents($req->photo));
+    /** masatokg 20200824 end */
 
     try
     {
